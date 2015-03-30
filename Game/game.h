@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "SFML/Graphics.hpp"
+#include "svar.h"
 #include "input.h"
 
 class Game
