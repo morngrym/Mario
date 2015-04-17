@@ -11,9 +11,11 @@ public:
     Game();
     ~Game();
 
+    // Runs game loop
     void Run();
 
 private:
+    // Input class
     Input m_inputHandler;
 };
 
