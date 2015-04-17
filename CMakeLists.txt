@@ -15,6 +15,7 @@ set(Mario_VERSION_MINOR 1)
 # Find all source files
 aux_source_directory(. SRC_LIST)
 aux_source_directory(./Game SRC_LIST)
+aux_source_directory(./Game/Core SRC_LIST)
 
 # Define sources and executable
 set(EXECUTABLE_NAME "Mario")
