@@ -21,6 +21,7 @@ public:
 
     // Initialize class variables
     static bool initialize();
+
     // Get window
     static sf::RenderWindow *getWindow();
 

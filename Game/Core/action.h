@@ -22,22 +22,29 @@ public:
 
     // Adds key to key vector
     void changeKey(sf::Keyboard::Key key);
+
     // Update actions situation
     void update();
+
     // Returns true if pressed
     bool isPressed();
+
     // Returns true if released
     bool isReleased();
 
 private:
     // Key that holds action
     sf::Keyboard::Key m_key;
+
     // Boolean that holds if pressed or not
     bool m_isPressed;
+
     // Boolean that holds if released or not
     bool m_isReleased;
+
     // Function to call if pressed
     std::function<void()> m_whenPressed;
+
     //Function to call if released
     std::function<void()> m_whenReleased;
 
