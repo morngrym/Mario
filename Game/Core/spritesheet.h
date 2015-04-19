@@ -28,19 +28,23 @@ public:
     ~SpriteSheet();
 
     // Sprite pointer that holds current sprite
-    // Cant change pointer position at memory
     const sf::Sprite * const getCurrentSprite();
+
+    // Add sprite rectangles in order
     void addNextSpriteRect(sf::Rect<int> rect);
 
 private:
     // Holds the position of sprites in the texture
     std::vector<sf::Rect<int>> m_spriteRectangles;
+
     // Texture that holds the sprite sheet.
     // Texture can be used at other classes
     // so it is a shared pointer
     std::shared_ptr<sf::Texture> m_texture;
+
     // Integer that holds current Sprite
     unsigned int m_currentSpriteRectNumber;
+
     // Sprite that holds current to be used
     std::unique_ptr<sf::Sprite> m_currentSprite;
 };
