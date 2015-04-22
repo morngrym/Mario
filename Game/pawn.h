@@ -12,7 +12,7 @@
 class Pawn : public Entity
 {
 public:
-    Pawn(sf::Texture &texture);
+    Pawn(sf::Texture &texture, unsigned int layerNumber);
     ~Pawn();
 };
 

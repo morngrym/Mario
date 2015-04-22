@@ -9,13 +9,14 @@
 // idea, please change it
 
 #include "Core/spritesheet.h"
+#include "Core/layer.h"
 
 class Entity
 {
 public:
     // Pointer could be nullptr
     // Just want to ensure there is a texture
-    Entity(sf::Texture &texture);
+    Entity(sf::Texture &texture, unsigned int layerNumber);
     ~Entity();
 
     // Returns a pointer to SpriteSheet
@@ -28,6 +29,10 @@ private:
 
     // SpriteSheet of entity
     std::unique_ptr<SpriteSheet> m_spriteSheet;
+
+    // Layer which our sprite will be drawn
+    Layer m_layer;
+
 };
 
 #endif // ENTITY_H

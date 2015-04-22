@@ -1,7 +1,8 @@
 #include "entity.h"
 
-Entity::Entity(sf::Texture& texture)
+Entity::Entity(sf::Texture& texture, unsigned int layerNumber)
     : m_spriteSheet(new SpriteSheet(texture))
+    , m_layer(layerNumber)
 {
 }
 
