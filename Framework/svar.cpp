@@ -1,7 +1,8 @@
 #include "svar.h"
 
-// Static variable, must be shown here
+// Static variables, must be shown here
 std::unique_ptr<sf::RenderWindow> SVar::m_window;
+std::vector<std::unique_ptr<Entity>> SVar::m_gameEntities;
 
 SVar::SVar()
 {
@@ -20,13 +21,20 @@ bool SVar::initialize()
 
     if(m_window.get() != nullptr)
         m_window->setFramerateLimit(60);
+
+    m_gameEntities = std::vector<std::unique_ptr<Entity>>();
 }
 
-sf::RenderWindow *SVar::getWindow()
+sf::RenderWindow &SVar::getWindow()
 {
     // Returns pointer holding window
     //
     // The pointer doesnt have to be deleted since it is already
     // owned by m_window
-    return m_window.get();
+    return *m_window.get();
+}
+
+std::vector<std::unique_ptr<Entity>> &SVar::getEntities()
+{
+    return m_gameEntities;
 }
