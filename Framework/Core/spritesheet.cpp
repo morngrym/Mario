@@ -11,7 +11,7 @@ SpriteSheet::~SpriteSheet()
 
 }
 
-const sf::Sprite * const SpriteSheet::getCurrentSprite()
+const sf::Sprite &SpriteSheet::getCurrentSprite()
 {
     // Set current rectangle of sprite
     m_currentSprite->setTextureRect(m_spriteRectangles.at(m_currentSpriteRectNumber));
@@ -22,7 +22,12 @@ const sf::Sprite * const SpriteSheet::getCurrentSprite()
     if(m_currentSpriteRectNumber > m_spriteRectangles.size())
         m_currentSpriteRectNumber = 0;
 
-    return m_currentSprite.get();
+    return *m_currentSprite.get();
+}
+
+void SpriteSheet::updateSpritePosition(const sf::Vector2f& worldPosition)
+{
+    m_currentSprite->setPosition(worldPosition);
 }
 
 void SpriteSheet::addNextSpriteRect(sf::Rect<int> rect)

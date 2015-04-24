@@ -11,7 +11,15 @@ Entity::~Entity()
 
 }
 
-SpriteSheet* Entity::getSpriteSheet()
+SpriteSheet &Entity::getSpriteSheet()
 {
-    return m_spriteSheet.get();
+    // Updating sprite position first
+    m_spriteSheet->updateSpritePosition(m_worldPosition);
+
+    return *m_spriteSheet.get();
+}
+
+const Layer& Entity::getLayer() const
+{
+    return m_layer;
 }

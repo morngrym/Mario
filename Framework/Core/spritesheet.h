@@ -28,7 +28,9 @@ public:
     ~SpriteSheet();
 
     // Sprite pointer that holds current sprite
-    const sf::Sprite * const getCurrentSprite();
+    const sf::Sprite & getCurrentSprite();
+
+    void updateSpritePosition(const sf::Vector2f& worldPosition);
 
     // Add sprite rectangles in order
     void addNextSpriteRect(sf::Rect<int> rect);

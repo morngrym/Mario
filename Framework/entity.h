@@ -21,11 +21,14 @@ public:
 
     // Returns a pointer to SpriteSheet
     // Use this function to add SpriteRectangles
-    SpriteSheet* getSpriteSheet();
+    SpriteSheet &getSpriteSheet();
+
+    // Returns layer class
+    const Layer& getLayer() const;
 
 private:
     // Position of the entity
-    sf::Vector2f m_position;
+    sf::Vector2f m_worldPosition;
 
     // SpriteSheet of entity
     std::unique_ptr<SpriteSheet> m_spriteSheet;
