@@ -2,13 +2,12 @@
 #define ACTION_H
 
 
-// This class is for controlling key events
+// This class is for controlling key events without value
 //
-// Example: Right Arrow and D key moves the character
-// to right. So MoveRight action will hold necessery keys
-// to move right and when they are pressed game will move
-// character to right
-
+// Example: Space key triggers jump, so Jump will hold
+// necessery key to jump and when it is pressed character
+// will jump
+//
 // TODO: Not that elegant at the moment, but we will improve
 
 #include <functional>
@@ -18,10 +17,14 @@ class Action
 {
 public:
     Action(sf::Keyboard::Key key, std::function<void()>  pressedFunction, std::function<void()>  releasedFunction);
+    Action(sf::Mouse::Button button, std::function<void()>  pressedFunction, std::function<void()>  releasedFunction);
     ~Action();
 
     // Adds key to key vector
     void changeKey(sf::Keyboard::Key key);
+
+    // Adds key to key vector
+    void changeButton(sf::Mouse::Button button);
 
     // Update actions situation
     void update();
@@ -33,14 +36,20 @@ public:
     bool isReleased();
 
 private:
-    // Key that holds action
-    sf::Keyboard::Key m_key;
-
     // Boolean that holds if pressed or not
     bool m_isPressed;
 
     // Boolean that holds if released or not
     bool m_isReleased;
+
+    // Value to check if button or key is not assigned
+    bool m_isKeyUsed;
+
+    // Key that triggers action
+    sf::Keyboard::Key m_key;
+
+    // Button that triggers action
+    sf::Mouse::Button m_button;
 
     // Function to call if pressed
     std::function<void()> m_whenPressed;
