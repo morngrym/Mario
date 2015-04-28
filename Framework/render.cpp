@@ -16,16 +16,13 @@ void Render::render() const
     for(unsigned int layerNumber = 0; layerNumber < 8; layerNumber++)
     {
         // Layers that are member of this layer
-        for(unsigned int entityNumber = 0; entityNumber < SVar::getEntities().size(); entityNumber++)
+        for(std::unique_ptr<Entity>& entity : SVar::getEntities())
         {
-            // Create a temporary pointer for current entity
-            Entity* const tempEntity = SVar::getEntities().at(entityNumber).get();
-
             // If entity is not nullptr and is a member of layerNumber
-            if(tempEntity && tempEntity->getLayer().isLayerMemberOf(layerNumber))
+            if(entity && entity->getLayer().isLayerMemberOf(layerNumber))
             {
                 // Draw the current sprite to screen
-                SVar::getWindow().draw(tempEntity->getSpriteSheet().getCurrentSprite());
+                SVar::getWindow().draw(entity->getSpriteSheet().getCurrentSprite());
             }
         }
     }
