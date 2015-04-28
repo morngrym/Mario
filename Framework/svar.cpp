@@ -27,7 +27,7 @@ bool SVar::initialize()
 
 sf::RenderWindow &SVar::getWindow()
 {
-    // Returns pointer holding window
+    // Returns reference holding window
     //
     // The pointer doesnt have to be deleted since it is already
     // owned by m_window
