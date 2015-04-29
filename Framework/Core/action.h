@@ -16,15 +16,28 @@
 class Action
 {
 public:
+    enum class ActionType : uint8_t
+    {
+        Key,
+        Button,
+        JoystickButton
+    };
+
     Action(sf::Keyboard::Key key, std::function<void()>  pressedFunction, std::function<void()>  releasedFunction);
     Action(sf::Mouse::Button button, std::function<void()>  pressedFunction, std::function<void()>  releasedFunction);
+    Action(uint8_t joystickButton, std::function<void()>  pressedFunction, std::function<void()>  releasedFunction);
     ~Action();
 
-    // Adds key to key vector
+    // Changes keyboard key, disables any other type
     void changeKey(sf::Keyboard::Key key);
 
-    // Adds key to key vector
+    // Changes mouse button, disables any other type
     void changeButton(sf::Mouse::Button button);
+
+    // Changes joystick button, disables any other type
+    // This function is dangerous to use hardcoded, use it with interface
+    // from user input. This way it is safer
+    void changeJoystickButton(uint8_t joystickButton);
 
     // Update actions situation
     void update();
@@ -43,13 +56,15 @@ private:
     bool m_isReleased;
 
     // Value to check if button or key is not assigned
-    bool m_isKeyUsed;
+    ActionType m_type;
 
     // Key that triggers action
     sf::Keyboard::Key m_key;
 
     // Button that triggers action
     sf::Mouse::Button m_button;
+
+    uint8_t m_joystickButton;
 
     // Function to call if pressed
     std::function<void()> m_whenPressed;
